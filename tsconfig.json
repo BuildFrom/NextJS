@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -19,19 +20,27 @@
     ],
     "baseUrl": "src/",
     "paths": {
+      "@/lib/*": ["lib/*"],
       "@/shadcn/*": ["lib/components/ui/*"],
       "@/components/*": ["lib/components/*"],
+      "@/hooks/*": ["lib/hooks/*"],
+      "@/models/*": ["lib/models/*"],
       "@/mdx/*": ["mdx/*"],
-      "@/lib/*": ["lib/*"],
       "@/pages/*": ["pages/*"],
       "@/styles/*": ["styles/*"],
-      "@/utils/*": ["utils/*"],
+      "@/utils/*": ["lib/utils/*"],
       "@/public/*": ["public/*"],
       "@/app/*": ["app/*"],
-      "@/hooks/*": ["lib/hooks/*"],
-      "@/content/*": ["./content/*"],
-    },
+
+      "@/content/*": ["./content/*"]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "next.config.mjs"
+  ],
   "exclude": ["node_modules"]
 }

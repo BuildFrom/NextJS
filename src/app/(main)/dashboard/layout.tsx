@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/lib/index";
+import { Navbar } from "@/lib/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,18 +22,13 @@ function ApplicationLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sfo antialiased",
-          inter.className
-        )}
-      >
+      <body className={cn(inter.className)}>
         <ThemeProvider defaultTheme="light" attribute="class">
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
     </html>
   );
 }
-
 export default ApplicationLayout;

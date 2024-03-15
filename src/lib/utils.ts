@@ -14,6 +14,18 @@ function formatDate(input: string | number): string {
   });
 }
 
-const utils = { formatDate };
+function formatPrice(
+  price: number | string,
+  options: Intl.NumberFormatOptions = {}
+) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: options.currency ?? "USD",
+    notation: options.notation ?? "compact",
+    ...options,
+  }).format(Number(price));
+}
+
+const utils = { formatDate, formatPrice };
 
 export default utils;

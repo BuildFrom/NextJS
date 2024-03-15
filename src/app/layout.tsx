@@ -3,7 +3,6 @@ import "@/styles/globals.css";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/lib/index";
-
 const inter = Inter({ subsets: ["latin"] });
 
 function RootLayout({
@@ -13,12 +12,7 @@ function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          inter.className
-        )}
-      >
+      <body className={cn("", inter.className)}>
         <ThemeProvider defaultTheme="light" attribute="class">
           {children}
         </ThemeProvider>

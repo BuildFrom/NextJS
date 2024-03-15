@@ -12,8 +12,8 @@ const emailRule = z
   .string()
   .email("Invalid email")
   .regex(
-    /^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-    "Email can only contain letters and numbers"
+    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    "Email can only contain letters, numbers, underscores, periods, and hyphens"
   );
 
 const passwordRule = z

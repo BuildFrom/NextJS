@@ -1,27 +1,25 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Button, buttonVariants } from "@/shadcn/button";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/shadcn/button";
+import React from "react";
+import { BackArrow, Bell } from "@/lib/icons";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/shadcn/card";
-import { Input } from "@/shadcn/input";
-import { BackArrow, Bell } from "@/lib/icons";
 
-import React from "react";
-import { registerAction } from "@/app/(auth)/register/actions";
-import { cn } from "@/lib/utils";
+import RegisterForm from "./register-form";
 
 export const metadata: Metadata = {
   title: "Register",
   description: "Register an account",
 };
 
-export default function Register() {
+function Register() {
   return (
     <>
       <div className="container flex h-screen w-screen flex-col items-center justify-center">
@@ -35,70 +33,18 @@ export default function Register() {
           <BackArrow width={20} height={20} />
           Back
         </Link>
-        <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-          <Card className="text-center">
-            <CardHeader>
+        <div className="mx-auto flex w-full flex-col justify-center sm:w-[350px]">
+          <Card>
+            <CardHeader className="text-center">
               <Bell width={20} height={20} />
               <CardTitle>Register</CardTitle>
-              <CardDescription>
-                Get accepted to any university in the world.
-              </CardDescription>
+              <CardDescription>Check this out</CardDescription>
             </CardHeader>
             <CardContent>
-              <form action={registerAction}>
-                <Input
-                  className="mb-5"
-                  name="name"
-                  id="name"
-                  type="name"
-                  placeholder="
-                                    Name"
-                />
-                <Input
-                  className="mb-5"
-                  name="username"
-                  id="username"
-                  type="username"
-                  placeholder="
-                                    Username"
-                />
-                <Input
-                  className="mb-5"
-                  name="email"
-                  id="email"
-                  type="email"
-                  placeholder="
-                                    Email"
-                />
-                <Input
-                  className="mb-5"
-                  name="password"
-                  id="password"
-                  type="password"
-                  placeholder="Password"
-                />
-                <Input
-                  name="confirm_password"
-                  id="confirm_password"
-                  type="confirm_password"
-                  placeholder="Confirm Password"
-                />
-              </form>
+              <RegisterForm />
             </CardContent>
-            <p className="px-8 text-center text-sm text-muted-foreground mb-5">
-              <Link
-                href="#"
-                className="hover:text-brand underline underline-offset-4"
-              >
-                Forgot your password or username?
-              </Link>
-            </p>
-            <CardFooter className="justify-center">
-              <Button>Submit</Button>
-            </CardFooter>
           </Card>
-
-          <p className="px-8 text-center text-sm text-muted-foreground">
+          <p className="px-8 mt-5 text-center text-sm text-muted-foreground">
             <Link
               href="login"
               className="hover:text-brand underline underline-offset-4"
@@ -111,3 +57,5 @@ export default function Register() {
     </>
   );
 }
+
+export default Register;

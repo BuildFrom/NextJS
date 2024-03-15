@@ -4,18 +4,20 @@ import { SignJWT } from "jose";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { validate } from "@/lib/index";
+import connectDB from "@/lib/database";
 
 const API_ENDPOINT = "https://localhost:8443/api/auth";
 
-export async function registerAction(formData: FormData) {
-  const registerAction = z.object({
-    name: z.string().min(6),
-    username: z.string().min(6),
-    email: z.string().email(),
-    password: z.string().min(8),
-    confirm_password: z.string().min(8),
-  });
-  const data = registerAction.parse(Object.fromEntries(formData));
+export async function register(formData: FormData) {
+  await connectDB();
+
+  const data = validate.registerSchema.safeParse(Object.fromEntries(formData));
+
+  if (!data.success) {
+    console.error("Validation Error:", data.error);
+    return { success: false, error: data.error };
+  }
 
   const response = await fetch(`${API_ENDPOINT}/register`, {
     method: "POST",

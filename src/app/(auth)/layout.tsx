@@ -21,12 +21,7 @@ function AuthLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sfo antialiased",
-          inter.className
-        )}
-      >
+      <body className={cn(inter.className)}>
         <ThemeProvider defaultTheme="light" attribute="class">
           {children}
         </ThemeProvider>

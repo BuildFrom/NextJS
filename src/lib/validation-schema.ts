@@ -6,13 +6,18 @@ const loginSchema = z.object({
   password: r.passwordRule,
 });
 
-const registerSchema = z.object({
-  name: r.nameSchema,
-  username: r.usernameRule,
-  email: r.emailRule,
-  password: r.passwordRule,
-  confirm_password: r.passwordRule,
-});
+const registerSchema = z
+  .object({
+    name: r.nameSchema,
+    username: r.usernameRule,
+    email: r.emailRule,
+    password: r.passwordRule,
+    confirm_password: r.passwordRule,
+  })
+  .refine((data) => data.password === data.confirm_password, {
+    message: "Passwords do not match",
+    path: ["confirm_password"],
+  });
 
 const validate = {
   loginSchema,

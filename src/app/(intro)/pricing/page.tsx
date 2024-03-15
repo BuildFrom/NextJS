@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 export const metadata = {
   title: "Pricing",
   alternates: {
-    canonical: "https://emailthing.vercel.app/pricing",
+    canonical: "localhost:3000/pricing",
   },
 };
 

@@ -1,0 +1,15 @@
+app.localhost {
+	encode zstd gzip
+	reverse_proxy * localhost:3000
+}
+
+dashboard.app.localhost {
+	encode zstd gzip
+	handle /dashboard* {
+		reverse_proxy localhost:3000
+	}
+}
+
+api.localhost {
+	reverse_proxy * localhost:8000
+}

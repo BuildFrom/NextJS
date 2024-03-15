@@ -1,17 +1,12 @@
-import { Viewport, Metadata } from "next";
+import { Viewport } from "next";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/lib/index";
-import { Navbar } from "@/components/index";
+import { Navbar, Footer } from "@/components/index";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Home",
-  description: "Welcome to the home page!",
-};
 
 export const viewport: Viewport = {
   themeColor: [
@@ -20,6 +15,14 @@ export const viewport: Viewport = {
   ],
 };
 
+import { SEO } from "@/lib/components/SEO";
+
+export const metadata = SEO({
+  title: `New Title`,
+  description: "Welcome to the home page",
+  canonicalUrlRelative: "/",
+});
+
 function IntroLayout({
   children,
 }: Readonly<{
@@ -27,15 +30,11 @@ function IntroLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sfo antialiased",
-          inter.className
-        )}
-      >
+      <body className={cn(inter.className)}>
         <ThemeProvider defaultTheme="light" attribute="class">
           <Navbar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
