@@ -2,15 +2,15 @@
 
 run:
 	lsof -i :3000 | awk 'NR!=1 {print $$2}' | xargs -r kill -9
-	npm run dev
+	bun run dev
 
 # Node modules
 
 upgrade-modules:
-	npx npm-check-updates -u
+	bunx npm-check-updates -u
 
 reinstall-modules:
-	rm -rf node_modules && npm install
+	rm -rf node_modules && bun install
 
 # Git
 
